@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.BackendCalculator.iml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../../../../../:\Users\rados\RiderProjects\BackendCalculator\BackendCalculator\.idea\.idea.BackendCalculator\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
