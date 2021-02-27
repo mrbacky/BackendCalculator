@@ -26,11 +26,12 @@ namespace Services
             if (numbers.Length < 1) throw new InvalidDataException("Values required for Multiply method");
             double result = numbers[0];
 
-           // double result = Subtract(numbers);
+            // double result = Subtract(numbers);
             for (int i = 1; i < numbers.Length; i++)
             {
                 result = result - numbers[i];
             }
+
             return result;
         }
 
@@ -40,7 +41,7 @@ namespace Services
             if (numbers.Length < 1) throw new InvalidDataException("Values required for Multiply method");
             var isAllZero = numbers.All(value => value == 0);
             if (isAllZero)
-                throw new InvalidDataException("Only zeros values not alowed.");
+                throw new ArgumentOutOfRangeException(nameof(numbers), "Only zeros values not alowed.");
 
             return numbers.Aggregate<double, double>(1, (current, num) => current * num);
         }
@@ -73,7 +74,5 @@ namespace Services
 
             return factorial;
         }
-
-        
     }
 }

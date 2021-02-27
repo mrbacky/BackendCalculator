@@ -110,9 +110,9 @@ namespace Tests
         [Test]
         public void Multiply_ZerosInParams_ShouldThrowExeption()
         {
-            var ex = Assert.Throws<InvalidDataException>(()
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(()
                 => _calc.Multiply(0, 0, 0, 0, 0));
-            Assert.That(ex.Message, Is.EqualTo("Only zeros values not alowed."));
+            Assert.That(ex.Message, Is.EqualTo("Only zeros values not alowed. (Parameter 'numbers')"));
         }
 
         [Test]
