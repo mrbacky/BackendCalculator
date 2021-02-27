@@ -41,7 +41,7 @@ namespace Services
             if (numbers.Length < 1) throw new InvalidDataException("Values required for Multiply method");
             var isAllZero = numbers.All(value => value == 0);
             if (isAllZero)
-                throw new ArgumentOutOfRangeException(nameof(numbers), "Only zeros values not alowed.");
+                throw new ArgumentOutOfRangeException(nameof(numbers), "Only zeros values not allowed.");
 
             return numbers.Aggregate<double, double>(1, (current, num) => current * num);
         }
