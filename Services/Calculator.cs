@@ -74,5 +74,10 @@ namespace Services
 
             return factorial;
         }
+
+        public double Power(double number1, double number2)
+        {
+            return Math.Pow(number1, number2);
+        }
     }
 }

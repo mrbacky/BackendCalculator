@@ -46,5 +46,21 @@ namespace Services
         /// <returns>The factorial of the given number</returns>
         double Factorial(double number);
 
+
+        /// <summary>
+        /// Exponentiation 
+        /// Examples:    5^2 = 5*5 = 25
+        ///             3^3 = 3*3*3 = 27
+        /// </summary>
+        /// <param name="number1">base</param>
+        /// <param name="number2">exponent</param>
+        /// <returns>product</returns>
+        double Power(double number1, double number2);
+
+
+
+
+
+
     }
 }

@@ -18,7 +18,7 @@ namespace Tests
         [Test]
         public void AddNumbersWithNoInput()
         {
-            double[] array = new double[0];
+            var array = Array.Empty<double>();
             var ex = Assert.Throws<InvalidDataException>(() => _calc.Add(array));
             Assert.That(ex.Message, Is.EqualTo("Values required for Add method"));
         }
@@ -59,7 +59,7 @@ namespace Tests
         [Test]
         public void SubtractNumbersWithNoInput()
         {
-            double[] array = new double[0];
+            var array = Array.Empty<double>();
             var ex = Assert.Throws<InvalidDataException>(() => _calc.Add(array));
             Assert.That(ex.Message, Is.EqualTo("Values required for Add method"));
         }
@@ -67,7 +67,7 @@ namespace Tests
         [Test]
         public void SubtractTwoPositiveNumbers()
         {
-            var actual = _calc.Subtract(10,5);
+            var actual = _calc.Subtract(10, 5);
             const double expected = 5;
             Assert.AreEqual(expected, actual);
         }
@@ -151,7 +151,7 @@ namespace Tests
         [Test]
         public void DivideNumbersWithNoInput()
         {
-            double[] array = new double[0];
+            var array = Array.Empty<double>();
             var ex = Assert.Throws<InvalidDataException>(() => _calc.Divide(array));
             Assert.That(ex.Message, Is.EqualTo("you need to input at least 2 numbers"));
         }
@@ -159,7 +159,7 @@ namespace Tests
         [Test]
         public void DivideTwoPositiveNumbers()
         {
-            double[] arr = new double[2] {10, 5};
+            var arr = new double[2] {10, 5};
             var actual = _calc.Divide(arr);
             Assert.AreEqual(actual, 2);
         }
@@ -167,7 +167,7 @@ namespace Tests
         [Test]
         public void DivideTwoNegativeNumbers()
         {
-            double[] arr = new double[2] {-10, -5};
+            var arr = new double[2] {-10, -5};
             var actual = _calc.Divide(arr);
             Assert.AreEqual(actual, 2);
         }
@@ -175,7 +175,7 @@ namespace Tests
         [Test]
         public void DivideTwoNumbersWithZero()
         {
-            double[] array = new double[2] {10, 0};
+            var array = new double[2] {10, 0};
             var ex = Assert.Throws<InvalidDataException>(() => _calc.Divide(array));
             Assert.That(ex.Message, Is.EqualTo("cannot divide with zero"));
         }
@@ -183,7 +183,7 @@ namespace Tests
         [Test]
         public void DivideThreeNumbersWithZero()
         {
-            double[] array = new double[3] {10, 6, 0};
+            var array = new double[3] {10, 6, 0};
             var ex = Assert.Throws<InvalidDataException>(() => _calc.Divide(array));
             Assert.That(ex.Message, Is.EqualTo("cannot divide with zero"));
         }
@@ -215,6 +215,22 @@ namespace Tests
         {
             var ex = Assert.Throws<InvalidDataException>(() => _calc.Factorial(-5));
             Assert.That(ex.Message, Is.EqualTo("cannot do factorial on numbers smaller than 0"));
+        }
+
+        [Test]
+        public void Power1()
+        {
+            var product = _calc.Power(5, 2);
+            const int expected = 25;
+            Assert.AreEqual(expected, product);
+        }
+
+        [Test]
+        public void Power2()
+        {
+            var product = _calc.Power(7, 14);
+            const long expected = 678223072849;
+            Assert.AreEqual(expected, product);
         }
     }
 }
