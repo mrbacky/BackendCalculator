@@ -9,27 +9,23 @@ namespace Services
         public double Add(params double[] numbers)
         {
             if (numbers.Length < 1) throw new InvalidDataException("Values required for Add method");
-
-
-            double sum = 0;
-            foreach (double num in numbers)
-            {
-                sum += num;
-            }
-
-            return sum;
+            var isAllZero = numbers.All(value => value == 0);
+            if (isAllZero)
+                throw new ArgumentOutOfRangeException(nameof(numbers), "Only zero values not allowed.");
+            return numbers.Sum();
         }
 
         //Armand
         public double Subtract(params double[] numbers)
         {
             if (numbers.Length < 1) throw new InvalidDataException("Values required for Multiply method");
-            double result = numbers[0];
-
-            // double result = Subtract(numbers);
-            for (int i = 1; i < numbers.Length; i++)
+            var isAllZero = numbers.All(value => value == 0);
+            if (isAllZero)
+                throw new ArgumentOutOfRangeException(nameof(numbers), "Only zero values not allowed.");
+            var result = numbers[0];
+            for (var i = 1; i < numbers.Length; i++)
             {
-                result = result - numbers[i];
+                result -= numbers[i];
             }
 
             return result;
@@ -41,7 +37,7 @@ namespace Services
             if (numbers.Length < 1) throw new InvalidDataException("Values required for Multiply method");
             var isAllZero = numbers.All(value => value == 0);
             if (isAllZero)
-                throw new ArgumentOutOfRangeException(nameof(numbers), "Only zeros values not allowed.");
+                throw new ArgumentOutOfRangeException(nameof(numbers), "Only zero values not allowed.");
 
             return numbers.Aggregate<double, double>(1, (current, num) => current * num);
         }
@@ -49,9 +45,11 @@ namespace Services
         public double Divide(params double[] numbers)
         {
             if (numbers.Length < 2) throw new InvalidDataException("you need to input at least 2 numbers");
-
-            double res = numbers[0];
-            for (int i = 1; i < numbers.Length; i++)
+            var isAllZero = numbers.All(value => value == 0);
+            if (isAllZero)
+                throw new ArgumentOutOfRangeException(nameof(numbers), "Only zero values not allowed.");
+            var res = numbers[0];
+            for (var i = 1; i < numbers.Length; i++)
             {
                 if (numbers[i] == 0) throw new InvalidDataException("cannot divide with zero");
                 res /= numbers[i];
@@ -62,22 +60,38 @@ namespace Services
 
         public double Factorial(double number)
         {
-            if (number < 0) throw new InvalidDataException("cannot do factorial on numbers smaller than 0");
-            if (number > 60) throw new InvalidDataException("highest factorial for this calculator is 60");
+            switch (number)
+            {
+                case < 0:
+                    throw new ArgumentOutOfRangeException(nameof(number),
+                        "Cannot do factorial on numbers smaller than 0.");
+                case > 60:
+                    throw new InvalidDataException("highest factorial for this calculator is 60");
+            }
 
             double factorial = 1;
 
-            for (int i = 1; i <= number; i++)
+            for (var i = 1; i <= number; i++)
             {
-                factorial = factorial * i;
+                factorial *= i;
             }
 
             return factorial;
         }
 
-        public double Power(double number1, double number2)
+        public double Power(double[] numbers)
         {
-            return Math.Pow(number1, number2);
+            if (numbers.Length != 2)
+            {
+                throw new ArgumentOutOfRangeException(nameof(numbers), "Exactly two numbers are required.");
+            }
+
+            var isAllZero = numbers.All(value => value == 0);
+            if (isAllZero)
+                throw new ArgumentOutOfRangeException(nameof(numbers), "Only zero values not allowed.");
+
+
+            return Math.Pow(numbers[0], numbers[1]);
         }
     }
 }

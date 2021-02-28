@@ -11,7 +11,7 @@ namespace Services
         /// <exception cref="ArgumentOutOfRangeException">Is thrown if zero numbers are given in the parameters.</exception>
         /// <returns>A sum of all numbers in the input</returns>
         double Add(params double[] numbers);
-        
+
         /// <summary>
         /// Takes all numbers in the input and return the subtracted number. That is: numbers[0] - numbers[1] - ... - numbers[n]
         /// </summary>
@@ -19,7 +19,7 @@ namespace Services
         /// <exception cref="ArgumentOutOfRangeException">Is thrown if zero numbers are given in the parameters.</exception>
         /// <returns>The result when all numbers are subtracted</returns>
         double Subtract(params double[] numbers);
-        
+
         /// <summary>
         /// Takes all numbers in the input and multiply them together.
         /// </summary>
@@ -27,7 +27,7 @@ namespace Services
         /// <exception cref="ArgumentOutOfRangeException">Is thrown if zero numbers are given in the parameters.</exception>
         /// <returns>The result when all numbers are multiplied</returns>
         double Multiply(params double[] numbers);
-        
+
         /// <summary>
         /// Takes all numbers in the input and divide them. That is: numbers[0] / numbers[1] / ... / numbers[n]
         /// </summary>
@@ -35,7 +35,7 @@ namespace Services
         /// <exception cref="ArgumentOutOfRangeException">Is thrown if zero numbers are given in the parameters.</exception>
         /// <returns>The result when all numbers have are divided</returns>
         double Divide(params double[] numbers);
-        
+
         /// <summary>
         /// Finds the factorial of the given number. The factorial of a number means that the number is multiplied with all integers between 1 and itself.
         /// For instance the factorial number of 5 = 5*4*3*2*1 = 120.
@@ -46,21 +46,15 @@ namespace Services
         /// <returns>The factorial of the given number</returns>
         double Factorial(double number);
 
-
         /// <summary>
-        /// Exponentiation 
+        /// Exponentiation
         /// Examples:    5^2 = 5*5 = 25
         ///             3^3 = 3*3*3 = 27
         /// </summary>
-        /// <param name="number1">base</param>
-        /// <param name="number2">exponent</param>
+        /// <param name="numbers">Array of two double values</param>
+        /// <exception cref="ArgumentOutOfRangeException">Is thrown if zero numbers are given in the parameters.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Is thrown if array does not contain exactly 2 numbers</exception>
         /// <returns>product</returns>
-        double Power(double number1, double number2);
-
-
-
-
-
-
+        double Power(double[] numbers);
     }
 }
