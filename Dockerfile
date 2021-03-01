@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
 COPY ["CalcApi/CalcApi.csproj", "CalcApi/"]
 COPY ["Services/Services.csproj", "Services/"]
-RUN dotnet restore "CalcApi/CalcApi.csproj"
+RUN dotnet restore --disable-parallel "CalcApi/CalcApi.csproj"
 COPY . .
 WORKDIR "/src/CalcApi"
 RUN dotnet build "CalcApi.csproj" -c Release -o /app/build
