@@ -1,7 +1,6 @@
 pipeline {
     agent any
 	triggers {
-		cron("0 * * * *")
 		pollSCM("*/3 * * * *")
 	}
 		
@@ -14,6 +13,11 @@ pipeline {
         stage("Test") {
             steps {
                sh  "dotnet test BackendCalculator.sln"
+            }
+        }
+        stage("Publish") {
+            steps {
+               sh  "dotnet publish -c Release BackendCalculator.sln"
             }
         }
         stage("Deliver to Docker Hub"){
