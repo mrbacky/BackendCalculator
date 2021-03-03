@@ -4,6 +4,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0
 COPY CalcApi/bin/Release/net5.0/publish App/
 WORKDIR /App
 
-ENV ASPNETCORE_URLS=http://+:5000
-ENV ASPNETCORE_HTTPS_PORT=https://+:5001
+#ENV ASPNETCORE_URLS=http://+:5000
+#ENV ASPNETCORE_HTTPS_PORT=https://+:5001
+EXPOSE 5555
+EXPOSE 5000
+ENV ASPNETCORE_URLS=https://+:5555;http://+:5000
 ENTRYPOINT ["dotnet", "CalcApi.dll"]
